@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Codes for Practical Exam</title>
+    <title></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -222,21 +222,33 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species' iris_df = pd.read_csv(url, header=None, names=columns)
-missing_values = iris_df.isnull().sum() print("Missing Values: \n", missing_values)
+columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
+iris_df = pd.read_csv(url, header=None, names=columns)
+
+missing_values = iris_df.isnull().sum()
+print("Missing Values:\n", missing_values)
+
 statistics = iris_df.describe()
-print("\nInitial Statistics: \n", statistics)
+print("\nInitial Statistics:\n", statistics)
+
 dimensions = iris_df.shape
 print("\nDimensions of the DataFrame:", dimensions)
+
 data_types = iris_df.dtypes
-print("\nData Types: \n", data_types)
+print("\nData Types:\n", data_types)
+
 iris_df['species'] = iris_df['species'].astype('category')
+
 categorical_vars = ['species']
-iris_encoded = pd.get_dummies (iris_df, columns=categorical_vars, drop_first=True)
-print("\nEncoded DataFrame: \n", iris_encoded.head())
+iris_encoded = pd.get_dummies(iris_df, columns=categorical_vars, drop_first=True)
+
+print("\nEncoded DataFrame:\n", iris_encoded.head())
+
 plt.figure(figsize=(10, 6))
 sns.pairplot(iris_df, hue='species', palette='viridis')
+
 plt.title("Pairplot of Iris Dataset")
 plt.show()
             </code></pre>
