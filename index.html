@@ -3,118 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Python Codes Collection</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            margin: 20px;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .code-container {
+            margin-bottom: 40px;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .code-section {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
+        h2 {
+            background-color: #f2f2f2;
             padding: 10px;
-            border-radius: 5px;
-        }
-        .code-section h2 {
-            margin-top: 0;
-            color: #444;
+            border: 1px solid #ccc;
         }
         pre {
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
             padding: 10px;
             overflow-x: auto;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Study Codes for Practical Exam</h1>
+    <h1>Python Codes Collection</h1>
 
-        <div class="code-section">
-            <h2>Code 1</h2>
-            <pre><code>
+    <div class="code-container">
+        <h2>1(a). Determine Type, Shape, Dimension, and Size of the Input Array</h2>
+        <pre>
 import numpy as np
-arr=np.array([[8,2,4], [6,5,9]])
-print(arr)
-print("array is of types: ",type(arr))
-print("no of dimensions is: ",arr.ndim)
-print("size of array is: ",arr.size)
-print("type of array is: ",arr.dtype)
-print("shape of array is: ",arr.shape)
-print(arr[2:])
-print("items in 2nd column are: ",arr[...,2]) 
-print("items in 2 nd row are: ",arr[1,...])
-print(arr[...,2],arr.dtype)
-print(arr[1,...],arr.dtype)
-            </code></pre>
-        </div>
 
-        <div class="code-section">
-            <h2>Code 2</h2>
-            <pre><code>
+# Input array
+array = np.array([[2, 3, 4], [6, 7, 8], [1, 2, 0]])
+
+# Determine properties of the array
+array_type = type(array)
+array_shape = array.shape
+array_ndim = array.ndim
+array_size = array.size
+
+# Output results
+print("Type of the array: ", array_type)
+print("Shape of the array: ", array_shape)
+print("Number of dimensions: ", array_ndim)
+print("Size of the array: ", array_size)
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>1(b). Perform Array Slicing Row-Wise and Column-Wise on the Input Array</h2>
+        <pre>
+import numpy as np
+
+# Input array
+array = np.array([[2, 7], [5, 8], [6, 10]])
+
+# Perform row-wise slicing
+first_row = array[0, :]
+second_row = array[1, :]
+third_row = array[2, :]
+
+# Perform column-wise slicing
+first_column = array[:, 0]
+second_column = array[:, 1]
+
+# Output results
+print("Original array:")
+print(array)
+print("\nFirst row:")
+print(first_row)
+print("\nSecond row:")
+print(second_row)
+print("\nThird row:")
+print(third_row)
+print("\nFirst column:")
+print(first_column)
+print("\nSecond column:")
+print(second_column)
+        </pre>
+    </div>
+    <div class="code-container">
+        <h2>2. Create a DataFrame Using a List of Elements and Print the First 3 Rows</h2>
+        <pre>
 import pandas as pd
-#List of elements 
-data=[10,20,30,40,50] 
-#Create a dataframe from the list 
-df=pd.DataFrame(data,columns=['Number']) 
-#Display the DataFrame 
-print(df)
-            </code></pre>
-        </div>
 
-        <div class="code-section">
-            <h2>Code 3</h2>
-            <pre><code>
+# Input data
+data = [
+    {"Name": "Aarav", "Age": 25, "Occupation": "Engineer", "City": "Delhi"},
+    {"Name": "Vivaan", "Age": 30, "Occupation": "Doctor", "City": "Mumbai"},
+    {"Name": "Aditya", "Age": 22, "Occupation": "Designer", "City": "Bangalore"},
+    {"Name": "Vihaan", "Age": 27, "Occupation": "Teacher", "City": "Chennai"},
+    {"Name": "Reyansh", "Age": 29, "Occupation": "Artist", "City": "Kolkata"}
+]
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display the first 3 rows
+print("First 3 rows of the DataFrame:")
+print(df.head(3))
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>3. Create and Customize Basic Plots Using Matplotlib</h2>
+        <pre>
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Sample data
+# Linear plot data
 x = np.linspace(0, 10, 100)  # 100 points from 0 to 10
-y = np.sin(x)  # Sine wave
-y2 = np.cos(x)  # Cosine wave
+y = 2 * x + 1  # Linear relationship y = 2x + 1
+
+# Bar plot data
 categories = ['A', 'B', 'C', 'D']
 values = [4, 7, 1, 8]
 
-# Create a line plot
-plt.figure(figsize=(10, 5))  # Set the figure size
-plt.subplot(1, 3, 1)  # (rows, columns, panel number)
-plt.plot(x, y, label='Sine Wave', color='blue', linestyle='-', linewidth=2)
-plt.plot(x, y2, label='Cosine Wave', color='orange', linestyle='--', linewidth=2)
-plt.title('Line Plot')
+# Create a figure
+plt.figure(figsize=(12, 6))
+
+# Linear plot
+plt.subplot(1, 2, 1)  # (rows, columns, panel number)
+plt.plot(x, y, label='y = 2x + 1', color='blue', linestyle='-', linewidth=2)
+plt.title('Linear Plot')
 plt.xlabel('X-axis')
 plt.ylabel('Y-axis')
 plt.legend()  # Show the legend
 plt.grid()  # Add a grid
 
-# Create a scatter plot
-plt.subplot(1, 3, 2)
-plt.scatter(x, y, color='green', alpha=0.5)  # Scatter plot with transparency
-plt.title('Scatter Plot')
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.grid()
-
-# Create a bar chart
-plt.subplot(1, 3, 3)
-plt.bar(categories, values, color='purple')
-plt.title('Bar Chart')
+# Bar plot
+plt.subplot(1, 2, 2)
+plt.bar(categories, values, color='green')
+plt.title('Bar Plot')
 plt.xlabel('Categories')
 plt.ylabel('Values')
 plt.grid(axis='y')  # Add a grid only on the y-axis
@@ -124,245 +144,385 @@ plt.tight_layout()
 
 # Show the plots
 plt.show()
-            </code></pre>
-        </div>
+        </pre>
+    </div>
 
-        <div class="code-section">
-            <h2>Code 4</h2>
-            <pre><code>
+    <div class="code-container">
+        <h2>4. Correlation Analysis and Scatter Plot Visualization</h2>
+        <pre>
 import numpy as np
-import matplotlib.pyplot as plt 
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Step 1: Start the Program
-# Step 2: Create variable y1, x1
-y1 = np.random.rand(100)  # Generate 100 random numbers for y1 
-x1 = np.random.rand(100)  # Generate 100 random numbers for x1
+# Generate or define data
+np.random.seed(0)
+x = np.random.rand(100)  # 100 random numbers between 0 and 1
+y = 2 * x + np.random.normal(0, 0.1, 100)  # Linear relationship with some noise
 
-# Step 3: Create variable x2, y2 using random function 
-x2 = np.random.rand(100)  # Generate 100 random numbers for x2 
-y2 = 2 * x2 + np.random.normal(0, 0.1, 100)  # Create a linear relationship with noise
+# Create a DataFrame
+data = pd.DataFrame({'x': x, 'y': y})
 
-# Step 4: Plot the scatter plot 
-plt.figure(figsize=(12, 6))
+# Calculate correlation
+correlation = data['x'].corr(data['y'])
+print(f"Correlation coefficient: {correlation:.2f}")
 
-# Scatter plot for y1 vs x1 
-plt.subplot(1, 2, 1)
-plt.scatter(x1, y1, color='blue', alpha=0.5) 
-plt.title('Scatter Plot of y1 vs x1') 
-plt.xlabel('x1') 
-plt.ylabel('y1')
+# Create scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(data['x'], data['y'], color='blue', alpha=0.5, label=f'Correlation: {correlation:.2f}')
+plt.title('Scatter Plot of x vs y')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
 
-# Scatter plot for y2 vs x2 
-plt.subplot(1, 2, 2)
-plt.scatter(x2, y2, color='green', alpha=0.5) 
-plt.title('Scatter Plot of y2 vs x2') 
-plt.xlabel('x2') 
-plt.ylabel('y2')
-
-plt.tight_layout() 
+# Show the plot
 plt.show()
+        </pre>
+    </div>
 
-# Step 5: Print the result
-correlation_y1_x = np.corrcoef(x1, y1)[0, 1] 
-correlation_y2_x = np.corrcoef(x2, y2)[0, 1]
-
-print(f'Correlation between y1 and x1: {correlation_y1_x:.2f}') 
-print(f'Correlation between y2 and x2: {correlation_y2_x:.2f}')
-            </code></pre>
-        </div>
-
-        <div class="code-section">
-            <h2>Code 5</h2>
-            <pre><code>
-import math
+    <div class="code-container">
+        <h2>5. Calculate Correlation Coefficient Between Variables in a Dataset</h2>
+        <pre>
+import pandas as pd
 import numpy as np
 
-# Function to calculate the Pearson correlation coefficient manually
-def correlationCoefficient(X, Y, n):
-    # Calculating sum of the elements of array X and Y
-    sum_X = sum(X)
-    sum_Y = sum(Y)
-    
-    # Calculating sum of the squares of the elements of array X and Y
-    squareSum_X = sum([x**2 for x in X])
-    squareSum_Y = sum([y**2 for y in Y])
-    
-    # Calculating the sum of the products of elements in X and Y
-    sum_XY = sum([X[i] * Y[i] for i in range(n)])
-    
-    # Use formula for calculating correlation coefficient
-    corr = (n * sum_XY - sum_X * sum_Y) / \
-            math.sqrt((n * squareSum_X - sum_X * sum_X) * (n * squareSum_Y - sum_Y * sum_Y))
-    
-    return corr
+# Sample dataset
+data = {
+    'Variable1': [10, 20, 30, 40, 50],
+    'Variable2': [15, 25, 35, 45, 55],
+    'Variable3': [8, 18, 28, 38, 48]
+}
 
-# Driver function for manual calculation
-X = [15, 18, 21, 24, 27]
-Y = [25, 25, 27, 31, 32]
+# Create DataFrame
+df = pd.DataFrame(data)
 
-# Find the size of the arrays
-n = len(X)
+# Calculate correlation matrix
+correlation_matrix = df.corr()
 
-# Function call to correlationCoefficient
-print(f'Manual Pearson correlation coefficient: {correlationCoefficient(X, Y, n):.6f}')
+# Output results
+print("Correlation Matrix:")
+print(correlation_matrix)
 
-# Using NumPy for comparison
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([2, 3, 5, 7, 11])
+# Calculate correlation coefficient between two specific variables
+correlation_coefficient = df['Variable1'].corr(df['Variable2'])
+print(f"\nCorrelation coefficient between Variable1 and Variable2: {correlation_coefficient:.2f}")
+        </pre>
+    </div>
+    <div class="code-container">
+        <h2>6. Perform Operations on an Open Source Dataset</h2>
+        <pre>
+import pandas as pd
+import numpy as np
 
-correlation = np.corrcoef(x, y)[0, 1]
-print(f'Pearson correlation coefficient (NumPy): {correlation}')
-            </code></pre>
-        </div>
+# Step 2: Locate an open source dataset
+# Dataset: "Daily Temperature of Major Cities" from Kaggle
+# URL: https://www.kaggle.com/sohier/daily-temperature-of-major-cities
 
-        <div class="code-section">
-            <h2>Code 6</h2>
-            <pre><code>
+# Step 3: Load the dataset into a Pandas DataFrame
+url = "https://www.kaggle.com/sohier/daily-temperature-of-major-cities/download"
+df = pd.read_csv(url)
+
+# Step 4: Data Preprocessing
+# Check for missing values
+missing_values = df.isnull().sum()
+print("Missing values in each column:\n", missing_values)
+
+# Get initial statistics
+initial_stats = df.describe()
+print("\nInitial statistics:\n", initial_stats)
+
+# Provide variable descriptions and types
+print("\nVariable descriptions and types:")
+print(df.info())
+
+# Check the dimensions of the DataFrame
+print("\nDimensions of the DataFrame:")
+print(df.shape)
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>7. Create a Linear Regression Model to Predict Home Prices Using Boston Housing Dataset</h2>
+        <pre>
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species']
-iris_df = pd.read_csv(url, header=None, names=columns)
+# Load the dataset
+url = "https://www.kaggle.com/sohier/daily-temperature-of-major-cities/download"
+df = pd.read_csv(url)
 
-missing_values = iris_df.isnull().sum()
-print("Missing Values:\n", missing_values)
+# Display the first few rows of the dataset
+print("First few rows of the dataset:")
+print(df.head())
 
-statistics = iris_df.describe()
-print("\nInitial Statistics:\n", statistics)
+# Data Preprocessing
+# Check for missing values
+print("\nMissing values in each column:")
+print(df.isnull().sum())
 
-dimensions = iris_df.shape
-print("\nDimensions of the DataFrame:", dimensions)
+# Get initial statistics
+print("\nInitial statistics:")
+print(df.describe())
 
-data_types = iris_df.dtypes
-print("\nData Types:\n", data_types)
+# Select features and target variable
+X = df[['RM', 'LSTAT', 'PTRATIO']]
+y = df['MEDV']
 
-iris_df['species'] = iris_df['species'].astype('category')
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-categorical_vars = ['species']
-iris_encoded = pd.get_dummies(iris_df, columns=categorical_vars, drop_first=True)
+# Create a linear regression model
+model = LinearRegression()
 
-print("\nEncoded DataFrame:\n", iris_encoded.head())
+# Train the model
+model.fit(X_train, y_train)
 
-plt.figure(figsize=(10, 6))
-sns.pairplot(iris_df, hue='species', palette='viridis')
+# Make predictions
+y_pred = model.predict(X_test)
 
-plt.title("Pairplot of Iris Dataset")
+# Calculate the mean squared error
+mse = mean_squared_error(y_test, y_pred)
+print("\nMean Squared Error: ", mse)
+
+# Plot the actual vs predicted values
+plt.scatter(y_test, y_pred, color='blue')
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('Actual vs Predicted Values')
 plt.show()
-            </code></pre>
-        </div>
+        </pre>
+    </div>
 
-        <div class="code-section">
-            <h2>Code 7</h2>
-            <pre><code>
+    <div class="code-container">
+        <h2>8. Create a Logistic Regression Model to Perform Classification on Social_Network_Ads.csv Dataset</h2>
+        <pre>
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
 
-def estimate_coef(x, y):
-    n = np.size(x)
-    m_x = np.mean(x)
-    m_y = np.mean(y)
+# Step 1: Read the dataset
+url = 'https://raw.githubusercontent.com/amankharwal/Website-data/master/Social_Network_Ads.csv'
+df = pd.read_csv(url)
 
-    SS_xy = np.sum(y * x) - n * m_y * m_x
-    SS_xx = np.sum(x * x) - n * m_x * m_x
+# Display the first few rows of the dataset
+print("First few rows of the dataset:")
+print(df.head())
 
-    b_1 = SS_xy / SS_xx
-    b_0 = m_y - b_1 * m_x
+# Step 2: Data Preprocessing
+# Select features and target variable
+X = df[['Age', 'EstimatedSalary']].values
+y = df['Purchased'].values
 
-    return (b_0, b_1)
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
-def plot_regression_line(x, y, b):
-    plt.scatter(x, y, color="m", marker="o", s=30)
+# Feature scaling
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
 
-    y_pred = b[0] + b[1] * x
+# Step 3: Create a logistic regression model
+classifier = LogisticRegression(random_state=0)
+classifier.fit(X_train, y_train)
 
-    plt.plot(x, y_pred, color="g")
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.show()
+# Step 4: Make predictions
+y_pred = classifier.predict(X_test)
 
-def main():
-    x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    y = np.array([1, 3, 2, 5, 7, 8, 8, 9, 10, 12])
+# Step 5: Evaluate the model
+cm = confusion_matrix(y_test, y_pred)
+accuracy = accuracy_score(y_test, y_pred)
 
-    b = estimate_coef(x, y)
-    print("Estimated coefficients:\nb_0 = {}\nb_1 = {}".format(b[0], b[1]))
+print("\nConfusion Matrix:")
+print(cm)
+print(f"\nAccuracy: {accuracy:.2f}")
 
-    plot_regression_line(x, y, b)
-
-if __name__ == "__main__":
-    main()
-
-            </code></pre>
-        </div>
-
-        <div class="code-section">
-            <h2>Code 8</h2>
-            <pre><code>
- import numpy as np
- import pandas as pd
- import matplotlib.pyplot as plt
- df=pd.read_csv("Social_Network_Ads (1).csv")
- print(df)
-            </code></pre>
-        </div>
-
-        <div class="code-section">
-            <h2>Code 9</h2>
-            <pre><code>
-import numpy as np 
-import pandas as pd 
-from sklearn.datasets import load_iris 
-from sklearn.model_selection import train_test_split 
-from sklearn.tree import DecisionTreeClassifier 
-from sklearn.tree import DecisionTreeRegressor 
-from sklearn.metrics import classification_report, accuracy_score 
-import matplotlib.pyplot as plt 
-from sklearn import tree 
-from sklearn.metrics import confusion_matrix 
-import seaborn as sns 
-
-# Load iris data 
-iris = load_iris() 
-X = iris.data  # Features 
-y = iris.target  # Target variable 
-
-# Convert to DataFrame for easier handling 
-iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names) 
-iris_df['species'] = iris.target_names[iris.target] 
-
-# Split the data into training and testing sets 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=45) 
-
-# Create and train the Decision Tree classifier 
-clf = DecisionTreeClassifier(criterion='gini', random_state=45) 
-clf.fit(X_train, y_train) 
-
-# Predict and evaluate the model 
-y_pred = clf.predict(X_test) 
-print("Accuracy Score:", accuracy_score(y_test, y_pred)) 
-print("Classification Report:") 
-print(classification_report(y_test, y_pred, target_names=iris.target_names)) 
-
-# Plot the Decision Tree 
-plt.figure(figsize=(20,10)) 
-tree.plot_tree(clf, feature_names=iris.feature_names, class_names=iris.target_names, filled=True) 
-plt.show() 
-
-# Generate confusion matrix 
-cm = confusion_matrix(y_test, y_pred) 
-
-# Plot confusion matrix using seaborn heatmap 
-plt.figure(figsize=(8, 6)) 
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=iris.target_names, yticklabels=iris.target_names) 
-plt.xlabel("Predicted Labels") 
-plt.ylabel("True Labels") 
-plt.title("Confusion Matrix") 
+# Step 6: Visualize the results
+plt.figure(figsize=(10, 6))
+plt.scatter(X_test[y_test == 0, 0], X_test[y_test == 0, 1], color='red', label='Not Purchased')
+plt.scatter(X_test[y_test == 1, 0], X_test[y_test == 1, 1], color='green', label='Purchased')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.title('Logistic Regression - Purchase Prediction')
+plt.legend()
 plt.show()
-            </code></pre>
-        </div>
+        </pre>
+    </div>
+    <div class="code-container">
+        <h2>9. Calculate the Type, Shape, Dimension, and Size of the Input Array</h2>
+        <pre>
+import numpy as np
+
+# Input array
+array = np.array([[2, 3, 4], [6, 7, 8], [1, 2, 0]])
+
+# Determine properties of the array
+array_type = type(array)
+array_shape = array.shape
+array_ndim = array.ndim
+array_size = array.size
+
+# Output results
+print("Type of the array: ", array_type)
+print("Shape of the array: ", array_shape)
+print("Number of dimensions: ", array_ndim)
+print("Size of the array: ", array_size)
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>10(b). Perform Array Slicing Row-Wise and Column-Wise on the Input Array</h2>
+        <pre>
+import numpy as np
+
+# Input array
+array = np.array([[2, 7], [5, 8], [6, 10]])
+
+# Perform row-wise slicing
+first_row = array[0, :]
+second_row = array[1, :]
+third_row = array[2, :]
+
+# Perform column-wise slicing
+first_column = array[:, 0]
+second_column = array[:, 1]
+
+# Output results
+print("Original array:")
+print(array)
+print("\nFirst row:")
+print(first_row)
+print("\nSecond row:")
+print(second_row)
+print("\nThird row:")
+print(third_row)
+print("\nFirst column:")
+print(first_column)
+print("\nSecond column:")
+print(second_column)
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>11. Create a Data Frame Using a List of Elements and Print the Bottom 2 Rows</h2>
+        <pre>
+import pandas as pd
+
+# Input data
+data = [
+    {"Name": "Aakash", "Age": 25, "Occupation": "Doctor", "City": "Delhi"},
+    {"Name": "Viyansh", "Age": 30, "Occupation": "Engineer", "City": "Nashik"},
+    {"Name": "Aditya", "Age": 28, "Occupation": "Designer", "City": "Punjab"}
+]
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display the bottom 2 rows
+print("Bottom 2 rows of the DataFrame:")
+print(df.tail(2))
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>12. Create and Customize Basic Plots Using Matplotlib in Python</h2>
+        <pre>
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Pie chart data
+labels = ['A', 'B', 'C', 'D']
+sizes = [15, 30, 45, 10]
+colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
+explode = (0.1, 0, 0, 0)  # explode 1st slice (i.e. 'A')
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+        autopct='%1.1f%%', shadow=True, startangle=140)
+plt.title('Pie Chart Example')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+# Display the pie chart
+plt.show()
+
+# Scatter plot data
+np.random.seed(0)
+x = np.random.rand(50)
+y = np.random.rand(50)
+
+# Create a scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(x, y, color='blue', alpha=0.5, label='Data points')
+plt.title('Scatter Plot Example')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.legend()
+plt.grid(True)
+
+# Display the scatter plot
+plt.show()
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>13. Create a Data Frame Using a List of Elements and Print the First Column 'Name'</h2>
+        <pre>
+import pandas as pd
+
+# Input data
+data = [
+    {"Name": "Aarav", "Age": 25, "Occupation": "Engineer", "City": "Delhi"},
+    {"Name": "Vivaan", "Age": 30, "Occupation": "Doctor", "City": "Mumbai"},
+    {"Name": "Aditya", "Age": 22, "Occupation": "Designer", "City": "Bangalore"},
+    {"Name": "Vihaan", "Age": 27, "Occupation": "Teacher", "City": "Chennai"},
+    {"Name": "Reyansh", "Age": 29, "Occupation": "Artist", "City": "Kolkata"}
+]
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display the DataFrame
+print("DataFrame:")
+print(df)
+
+# Select and print the first column 'Name'
+print("\nFirst column 'Name':")
+print(df['Name'])
+        </pre>
+    </div>
+
+    <div class="code-container">
+        <h2>14. Create a Data Frame Using a List of Elements and Print the First 2 Rows</h2>
+        <pre>
+import pandas as pd
+
+# Input data
+data = [
+    {"Name": "Aakash", "Age": 25, "Occupation": "Doctor", "City": "Delhi"},
+    {"Name": "Viyansh", "Age": 30, "Occupation": "Engineer", "City": "Nashik"},
+    {"Name": "Aditya", "Age": 28, "Occupation": "Designer", "City": "Punjab"}
+]
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display the first 2 rows
+print("First 2 rows of the DataFrame:")
+print(df.head(2))
+
+# Find and print the shape of the DataFrame
+print("\nShape of the DataFrame:")
+print(df.shape)
+        </pre>
     </div>
 </body>
 </html>
